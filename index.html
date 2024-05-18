@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotable Translator</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Quote Generator and Translator</h1>
+        <div class="controls">
+            <select id="language-select">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="it">Italian</option>
+                <option value="fr">French</option>
+                <!-- You can add more languages here -->
+            </select>
+            <button id="generate-quote">Generate Quote</button>
+            <button id="translate-quote">Translate Quote</button>
+        </div>
+        <div class="quote-container">
+            <p id="quote-text">Click the button to generate a quote.</p>
+            <p id="quote-author"></p>
+        </div>
+    </div>
+    <script src="scripts/script.js"></script>
+</body>
+</html>
