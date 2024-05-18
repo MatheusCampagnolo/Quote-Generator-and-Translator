@@ -1,5 +1,6 @@
 document.getElementById('generate-quote').addEventListener('click', generateQuote);
 document.getElementById('translate-quote').addEventListener('click', translateCurrentQuote);
+document.getElementById('copy-quote').addEventListener('click', copyQuoteToClipboard);
 
 // The informations that we want to display with the api
 let currentQuote = '';
@@ -21,7 +22,11 @@ async function generateQuote() {
             displayQuote(currentQuote, currentAuthor);
         } else {
             translateQuote(currentQuote, currentAuthor, selectedLanguage);
-        } 
+        }
+
+        // Show the copy button after generating the first quote
+        document.getElementById('copy-quote').style.display = 'block';
+        
     } catch (error) {
         console.error('Error fetching quote:', error);
     }
@@ -57,4 +62,16 @@ async function translateQuote(quote, author, targetLanguage) {
         } catch(error) {
             console.error('Error fetching translation:', error);
         }
+}
+
+function copyQuoteToClipboard() {
+    const quoteText = document.getElementById('quote-text').textContent;
+    const quoteAuthor = document.getElementById('quote-author').textContent;
+    const textToCopy = `${quoteText} ${quoteAuthor}`;
+    
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        alert('Quote copied to clipboard');
+    }).catch(err => {
+        console.error('Error copying text: ', err);
+    });
 }
